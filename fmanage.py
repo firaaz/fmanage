@@ -91,7 +91,7 @@ def main():
         os.system('mkdir home')
     os.chdir(dirc)
 
-    # creating the required files if it isnt already created
+    # creating the required files if it isn't already created
     for file_name in files:
         if file_name not in os.listdir(os.getcwd()):
             os.makedirs(file_name)
