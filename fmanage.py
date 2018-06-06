@@ -57,7 +57,7 @@ def music_files(files):
     newdir = dirc + 'Music/'
     audiofile = eyed3.load(files)
 
-    #init meta vars
+    # init meta vars
     title = audiofile.tag.title
     artist = audiofile.tag.artist
     album = audiofile.tag.album
