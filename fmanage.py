@@ -56,8 +56,12 @@ def music_files(files):
     start_dir = os.getcwd()
     newdir = dirc + 'Music/'
     audiofile = eyed3.load(files)
+
+    #init meta vars
+    title = audiofile.tag.title
     artist = audiofile.tag.artist
     album = audiofile.tag.album
+
     os.chdir(newdir)
     if (artist) not in os.listdir(newdir):
         os.makedirs(artist)
@@ -69,7 +73,7 @@ def music_files(files):
 
     os.chdir(newdir)
 
-    mvdir = newdir + '/' .join([artist, album, files])
+    mvdir = newdir + '/' .join([artist, album, title])
     shutil.move(files, mvdir)
     os.chdir(start_dir)
 
