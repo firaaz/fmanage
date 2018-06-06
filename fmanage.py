@@ -52,7 +52,6 @@ def files_check_extension(directory, extension):
 
 
 def music_files(files):
-
     start_dir = os.getcwd()
     newdir = dirc + 'Music/'
     audiofile = eyed3.load(files)
@@ -61,6 +60,8 @@ def music_files(files):
     title = audiofile.tag.title
     artist = audiofile.tag.artist
     album = audiofile.tag.album
+
+    print(title, artist, album)
 
     os.chdir(newdir)
     if (artist) not in os.listdir(newdir):
@@ -74,12 +75,17 @@ def music_files(files):
     os.chdir(newdir)
 
     mvdir = newdir + '/' .join([artist, album, title])
-    shutil.move(files, mvdir)
+    shutil.move(start_dir+files, mvdir)
+    os.chdir(start_dir)
+
+
+def files_move(files, filetype):
+    start_dir = os.getcwd()
+    shutil.move(start_dir+files, home+filetype)
     os.chdir(start_dir)
 
 
 def main():
-
     os.chdir(home)
     if 'home' not in os.listdir(home):
         os.system('mkdir home')
@@ -89,6 +95,12 @@ def main():
     for file_name in files:
         if file_name not in os.listdir(os.getcwd()):
             os.makedirs(file_name)
+
+    # to find all the files and move to the specified folders
+    for root in os.listdir(home):
+        for folders in file_types:
+            for extension in file_types[folders]:
+                files_check_extension(root, extension)
 
 
 if __name__ == "__main__":
