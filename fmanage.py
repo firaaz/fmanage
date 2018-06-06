@@ -3,6 +3,7 @@
 import argparse
 import os
 
+# init
 file_types = dict()
 home = '/mnt/DATA/'
 files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads', 'Video']
@@ -14,18 +15,25 @@ file_types['Video'] = ['webm', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'mp4',
 file_types['Music'] = ['mp3', 'mpa', 'aac', 'oga', 'ape', 'm4a', 'flac', 'm4p', 'wav']
 file_types['Pictures'] = ['jpeg', 'jfif', 'exif', 'gif', 'bmp', 'png']
 file_types['Documents'] = []
-file_types['Movies'] = []
 
 
-os.chdir(home)
-if 'home' not in os.listdir(home):
-    os.system('mkdir home')
-os.chdir(dirc)
+def files_check_extension(directory, extension):
+    for dirpath, dirnames, filenames in os.walk(directory):
+        return (f for f in filenames if f.endswith('.'+extension))
 
-# creating the required files if it isnt already created
-for file_name in files:
-    if file_name not in os.listdir(os.getcwd()):
-        os.makedirs(file_name)
 
-for name, subdir, filename in os.walk(os.getcwd(), topdown=False):
-    print(filename)
+def main():
+
+    os.chdir(home)
+    if 'home' not in os.listdir(home):
+        os.system('mkdir home')
+    os.chdir(dirc)
+
+    # creating the required files if it isnt already created
+    for file_name in files:
+        if file_name not in os.listdir(os.getcwd()):
+            os.makedirs(file_name)
+
+
+if __name__ == "__main__":
+    main()
