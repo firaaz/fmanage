@@ -50,6 +50,9 @@ def files_check_extension(directory, extension):
     for dirpath, dirnames, filenames in os.walk(directory):
         return (f for f in filenames if f.endswith('.'+extension))
 
+def random_check():
+    print ("Push works")
+
 
 def music_files(files):
     start_dir = os.getcwd()
