@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os
-import argparse
+# import argparse
 import eyed3
 import shutil
 
@@ -9,9 +9,7 @@ import shutil
 file_types = dict()
 home = '/mnt/DATA/'
 files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads', 'Video']
-# home = os.environ['HOME']
-dirc = home + 'home/'
-
+# home = os.environ['HOME'] dirc = home + 'home/'
 # File type bindings
 file_types['Video'] = [
         'webm',
