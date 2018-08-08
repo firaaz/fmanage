@@ -12,35 +12,35 @@ files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads', 'Video']
 # home = os.environ['HOME'] dirc = home + 'home/'
 # File type bindings
 file_types['Video'] = [
-        'webm',
-        'mpg',
-        'mp2',
-        'mpeg',
-        'mpe',
-        'mpv',
-        'ogg',
-        'mp4',
-        'm4v',
-        ]
+    'webm',
+    'mpg',
+    'mp2',
+    'mpeg',
+    'mpe',
+    'mpv',
+    'ogg',
+    'mp4',
+    'm4v',
+]
 file_types['Music'] = [
-        'mp3',
-        'mpa',
-        'aac',
-        'oga',
-        'ape',
-        'm4a',
-        'flac',
-        'm4p',
-        'wav',
-        ]
+    'mp3',
+    'mpa',
+    'aac',
+    'oga',
+    'ape',
+    'm4a',
+    'flac',
+    'm4p',
+    'wav',
+]
 file_types['Pictures'] = [
-        'jpeg',
-        'jfif',
-        'exif',
-        'gif',
-        'bmp',
-        'png',
-        ]
+    'jpeg',
+    'jfif',
+    'exif',
+    'gif',
+    'bmp',
+    'png',
+]
 file_types['Documents'] = []
 
 
@@ -48,8 +48,9 @@ def files_check_extension(directory, extension):
     for dirpath, dirnames, filenames in os.walk(directory):
         return (f for f in filenames if f.endswith('.'+extension))
 
+
 def random_check():
-    print ("Push works")
+    print("Push works")
 
 
 def music_files(files):
@@ -104,5 +105,6 @@ def main():
                 files_check_extension(root, extension)
 
 
+print(__name__)
 if __name__ == "__main__":
     main()
