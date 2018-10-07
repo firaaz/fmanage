@@ -105,7 +105,5 @@ def main():
                 files_check_extension(root, extension)
 
 
-
 print(__name__)
 if __name__ == "__main__":
-    main()
