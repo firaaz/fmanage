@@ -1,14 +1,4 @@
----
-author:
-- firaaz
-title: todo
----
-
-Inbox
-=====
-
-\[ \]scrape music brainz for the data
--------------------------------------
-
-\[ \] Add sound support
------------------------
+- [TODO] search through the data bases for the actual song tags
+- [TODO] search through the databases to classify movies vs tv shows
+- [TODO] rename to the actual standardized file names
+- [TODO] move to the respective folders
