@@ -49,10 +49,6 @@ def files_check_extension(directory, extension):
         return (f for f in filenames if f.endswith('.'+extension))
 
 
-def random_check():
-    print("Push works")
-
-
 def music_files(files):
     start_dir = os.getcwd()
     newdir = dirc + 'Music/'
@@ -105,8 +101,5 @@ def main():
                 files_check_extension(root, extension)
 
 
-
-
-print(__name__)
 if __name__ == "__main__":
     main()
