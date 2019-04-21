@@ -10,6 +10,7 @@ file_types = dict()
 home = '/mnt/DATA/'
 files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads', 'Video']
 # home = os.environ['HOME'] dirc = home + 'home/'
+
 # File type bindings
 file_types['Video'] = [
     'webm',
