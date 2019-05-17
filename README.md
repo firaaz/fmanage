@@ -1,3 +1,3 @@
-# This is a program to automatically move files around the file system 
+# This is a program to automatically organize the files on the system to the appropriate structure
 
 - Work in progress

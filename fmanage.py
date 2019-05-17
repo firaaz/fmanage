@@ -1,48 +1,53 @@
 #!/usr/bin/python
 
 import os
-# import argparse
-import eyed3
+#  import argparse
+#  import eyed3
 import shutil
 
+
 # init
-file_types = dict()
-home = '/mnt/DATA/'
-files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads', 'Video']
-# home = os.environ['HOME'] dirc = home + 'home/'
+def inititate():
+    global file_types, home, files, dirc
+    #  home = os.environ['HOME']
+    dirc = home + 'home/'
+    files = dict()
+    home = './home'
+    files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads',
+             'Video']
 
 # File type bindings
-file_types['Video'] = [
-    'webm',
-    'mpg',
-    'mp2',
-    'mpeg',
-    'mpe',
-    'mpv',
-    'ogg',
-    'mp4',
-    'm4v',
-]
-file_types['Music'] = [
-    'mp3',
-    'mpa',
-    'aac',
-    'oga',
-    'ape',
-    'm4a',
-    'flac',
-    'm4p',
-    'wav',
-]
-file_types['Pictures'] = [
-    'jpeg',
-    'jfif',
-    'exif',
-    'gif',
-    'bmp',
-    'png',
-]
-file_types['Documents'] = []
+    file_types['Video'] = [
+        'webm',
+        'mpg',
+        'mp2',
+        'mpeg',
+        'mpe',
+        'mpv',
+        'ogg',
+        'mp4',
+        'm4v',
+    ]
+    file_types['Music'] = [
+        'mp3',
+        'mpa',
+        'aac',
+        'oga',
+        'ape',
+        'm4a',
+        'flac',
+        'm4p',
+        'wav',
+    ]
+    file_types['Pictures'] = [
+        'jpeg',
+        'jfif',
+        'exif',
+        'gif',
+        'bmp',
+        'png',
+    ]
+    file_types['Documents'] = []
 
 
 def files_check_extension(directory, extension):
@@ -85,6 +90,7 @@ def files_move(files, filetype):
 
 
 def main():
+    inititate()
     os.chdir(home)
     if 'home' not in os.listdir(home):
         os.system('mkdir home')
