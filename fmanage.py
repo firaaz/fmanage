@@ -1,20 +1,28 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import os
-#  import argparse
-#  import eyed3
-import shutil
+# import shutil
 
-
-# init
-def inititate():
-    global file_types, home, files, dirc
-    #  home = os.environ['HOME']
-    dirc = home + 'home/'
-    files = dict()
-    home = './home'
+def initiate():
+    """
+    Initializations that need to be done before running the program
+    input: None
+    output: dict of file types
+    """
+    file_types = dict()
+    home = './home' #for dev purpose change to "$HOME" after while completed
     files = ['Documents', 'Music', 'Pictures', 'Torrents', 'Downloads',
              'Video']
+
+    # creating home dir if not already avaliable
+    if 'home' not in os.listdir(os.getcwd()):
+        os.mkdir('home')
+    os.chdir(home)
+
+    # creating the directories inside home if not already present
+    for file_name in files:
+        if file_name not in os.listdir(os.getcwd()):
+            os.mkdir(file_name)
 
 # File type bindings
     file_types['Video'] = [
@@ -49,64 +57,13 @@ def inititate():
     ]
     file_types['Documents'] = []
 
-
-def files_check_extension(directory, extension):
-    for dirpath, dirnames, filenames in os.walk(directory):
-        return (f for f in filenames if f.endswith('.'+extension))
-
-
-def music_files(files):
-    start_dir = os.getcwd()
-    newdir = dirc + 'Music/'
-    audiofile = eyed3.load(files)
-
-    # init meta vars
-    title = audiofile.tag.title
-    artist = audiofile.tag.artist
-    album = audiofile.tag.album
-
-    print(title, artist, album)
-
-    os.chdir(newdir)
-    if (artist) not in os.listdir(newdir):
-        os.makedirs(artist)
-
-    os.chdir(newdir + artist)
-
-    if (album) not in os.listdir(newdir+artist+'/'):
-        os.makedirs(album)
-
-    os.chdir(newdir)
-
-    mvdir = newdir + '/' .join([artist, album, title])
-    shutil.move(start_dir+files, mvdir)
-    os.chdir(start_dir)
-
-
-def files_move(files, filetype):
-    start_dir = os.getcwd()
-    shutil.move(start_dir+files, home+filetype)
-    os.chdir(start_dir)
-
+    return file_types, files
 
 def main():
-    inititate()
-    os.chdir(home)
-    if 'home' not in os.listdir(home):
-        os.system('mkdir home')
-    os.chdir(dirc)
+    """
+    main control flow of the program
+    """
+    file_types = initiate()
 
-    # creating the required files if it isn't already created
-    for file_name in files:
-        if file_name not in os.listdir(os.getcwd()):
-            os.makedirs(file_name)
-
-    # to find all the files and move to the specified folders
-    for root in os.listdir(home):
-        for folders in file_types:
-            for extension in file_types[folders]:
-                files_check_extension(root, extension)
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
